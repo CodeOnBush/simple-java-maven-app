@@ -6,9 +6,19 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
+        stage('构建') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        stage('测试') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
             }
         }
     }
