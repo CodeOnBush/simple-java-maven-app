@@ -5,7 +5,7 @@ node {
         docker.image('maven:3.6.0-jdk-8-alpine').inside('-v /root/.m2:/root/.m2') {
             sh 'mvn --version'
             sh 'mvn clean install'
-            sh 'mvn package docker:build'
+            sh 'mvn clean package dockerfile:build'
         }
     }
     /*stage('docker run') {
