@@ -9,6 +9,7 @@ node {
     }
     stage('docker run') {
         sh 'pwd'
+        sh 'll'
         def customImage = docker.build("my-image:${dockerTag}")
         customImage.run("-it -d --name ${dockerName} -p 8090:8090")
     }
