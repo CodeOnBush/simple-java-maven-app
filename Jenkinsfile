@@ -8,11 +8,9 @@ node {
         }
     }
     stage('docker run') {
-        dir("jenkins") {
-            sh 'pwd'
-            sh 'ls -r ./'
-            def customImage = docker.build("my-image:${dockerTag}")
-            customImage.run("-it -d --name ${dockerName} -p 8090:8090")
-        }
+        sh 'pwd'
+        sh 'ls -r ./'
+        def customImage = docker.build("my-image:${dockerTag}")
+        customImage.run("-it -d --name ${dockerName} -p 8090:8090")
     }
 }
