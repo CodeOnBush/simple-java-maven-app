@@ -5,14 +5,15 @@ node {
         docker.image('maven:3.6.0-jdk-8-alpine').inside('-v /root/.m2:/root/.m2') {
             sh 'mvn --version'
             sh 'mvn clean install'
+            sh 'mvn package docker:build'
         }
     }
-    stage('docker run') {
+    /*stage('docker run') {
         dir("jenkins") {
             sh 'pwd'
             sh 'ls -r ./'
             def customImage = docker.build("my-image:${dockerTag}")
             customImage.run("-it -d --name ${dockerName} -p 8090:8090")
         }
-    }
+    }*/
 }
