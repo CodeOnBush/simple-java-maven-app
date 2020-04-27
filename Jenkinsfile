@@ -1,7 +1,6 @@
-import java.text.SimpleDateFormat
 node {
     def dockerName='shengle'
-    def dockerTag = dateFormat.format(new Date())
+    def dockerTag = '001'
     stage('build'){
         docker.image('maven:3.6.0-jdk-8-alpine').inside('-v /root/.m2:/root/.m2') {
             sh 'mvn --version'
