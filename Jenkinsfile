@@ -1,4 +1,5 @@
 node {
+    checkout scm
     def dockerName='shengle'
     def dockerTag = '001'
     stage('build'){
